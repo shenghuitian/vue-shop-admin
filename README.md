@@ -1,24 +1,74 @@
 # vue-shop-admin
 
-## Project setup
+## 项目安装
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 开发环境下编译和热更新
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 生产环境编译和压缩打包
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### 检测和修复文件
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 自定义配置
+查看 [配置参考](https://cli.vuejs.org/config/).
+
+## 项目开发流程
+
+### 基于 Vue-CLI 脚手架创建项目
+```
+vue create vue-shop-admin
+```
+
+### 安装 ElementUI 插件
+```
+npm i element-ui -S
+```
+
+### 按需引入组件
+
+首先，安装 babel-plugin-component：
+```
+npm install babel-plugin-component -D
+```
+
+然后，将 babel.config.js 修改为：
+```javascript
+module.exports = {
+  presets: [
+    '@vue/cli-plugin-babel/preset'
+  ],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+```
+
+### 安装 axios 依赖
+```
+npm i axios -S
+```
+
+### 将本地代码托管到 github 中
+
+```
+git remote add origin git@github.com:shenghui716/vue-shop-admin.git
+git push -u origin master
+```
+
