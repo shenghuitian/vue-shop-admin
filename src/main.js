@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Api from 'api' // 导入API接口
-import './plugins/element.js'
+import './plugins/element.js' // 导入element组件
+import 'assets/css/global.css' // 导入全局样式表
 
 Vue.config.productionTip = false
 
