@@ -7,7 +7,8 @@ const API = {
   /* 登录请求 */
   login: post('/login'),
   /* 用户管理 */
-  getUsers: get('/users')
+  getUsers: get('/users'),
+  getMenuList: get('/menus')
 }
 
 // 导出接口

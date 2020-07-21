@@ -11,6 +11,8 @@ axios.defaults.timeout = 10000
 // 设置请求拦截器
 axios.interceptors.request.use(
   config => {
+    // 在请求头中使用 Authorization 字段提供 token 令牌
+    config.headers.Authorization = sessionStorage.getItem('token')
     return config
   },
   error => {
