@@ -3,7 +3,11 @@ import QS from 'qs' // 引入qs模块，用来序列化post类型的数据
 import { Message } from 'element-ui'
 
 // 设置接口的默认地址：配置请求URL的统一前缀，后续无需在每个API接口重复写
-axios.defaults.baseURL = 'https://www.liulongbin.top:8888/api/private/v1/'
+const urlMap = {
+  development: '/api/', // 开发环境下接口地址
+  production: 'https://www.liulongbin.top:8888/api/private/v1/' // 生产环境下接口地址
+}
+axios.defaults.baseURL = urlMap[process.env.NODE_ENV]
 
 // 设置默认请求超时时间
 axios.defaults.timeout = 10000
