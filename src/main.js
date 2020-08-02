@@ -13,6 +13,11 @@ Vue.config.productionTip = false
 Vue.prototype.$api = Api
 Vue.prototype.$http = Axios
 
+// 开发环境下引入 Mock 数据
+if (process.env.NODE_ENV === 'development') {
+  require('api/mock.js')
+}
+
 new Vue({
   router,
   store,
