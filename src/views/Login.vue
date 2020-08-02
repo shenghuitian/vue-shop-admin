@@ -61,6 +61,7 @@ export default {
   },
   methods: {
     login() {
+      // 登录表单预校验
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return false
 
@@ -78,7 +79,7 @@ export default {
         this.$router.push(path)
       })
     },
-    // 点击登录按钮，重置登录表单
+    // 点击重置按钮，重置登录表单
     resetLoginForm() {
       this.$refs.loginFormRef.resetFields()
     }

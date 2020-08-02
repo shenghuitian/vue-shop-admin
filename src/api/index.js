@@ -7,7 +7,10 @@ const API = {
   /* 登录请求 */
   login: post('/login'),
   /* 用户管理 */
-  getUsers: get('/users'),
+  getUserList: get('/users'),
+  addUser: post('/users'),
+
+  /* 获取菜单列表 */
   getMenuList: get('/menus')
 }
 

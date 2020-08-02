@@ -20,19 +20,24 @@
           :collapse="isCollapse"
           :collapse-transition="false"
           unique-opened
+          :default-active="$route.path"
           router
         >
           <!-- 一级菜单 -->
           <el-submenu v-for="item in menuList" :key="item.id" :index="String(item.id)">
             <template slot="title">
               <i :class="iconObj[item.id]"></i>
-              <span>{{item.authName}}</span>
+              <span>{{ item.authName }}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item v-for="subItem in item.children" :key="subItem.id" :index="item.path">
+            <el-menu-item
+              v-for="subItem in item.children"
+              :key="subItem.id"
+              :index="'/' + subItem.path"
+            >
               <template slot="title">
                 <i class="el-icon-menu"></i>
-                <span>{{subItem.authName}}</span>
+                <span>{{ subItem.authName }}</span>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -77,7 +82,6 @@ export default {
       const res = await this.$api.getMenuList()
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menuList = res.data
-      console.log(res.data)
     }
   }
 }

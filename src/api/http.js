@@ -89,7 +89,12 @@ const handleError = (status, other) => {
  */
 export function get(url) {
   return function(params = {}) {
-    return axios.get(url, { params })
+    return axios.get(url, {
+      params,
+      paramsSerializer: params => {
+        return QS.stringify(params, { indices: false })
+      }
+    })
   }
 }
 
@@ -103,3 +108,32 @@ export function post(url) {
     return axios.post(url, QS.stringify(params, { indices: false }))
   }
 }
+
+/**
+ * 封装put方法，对应put请求
+ * @param {String} url [请求的url地址]
+ * @param {Object} params [请求时携带的参数]
+ */
+export function put(url) {
+  return function(params = {}) {
+    return axios.put(url, QS.stringify(params, { indices: false }))
+  }
+}
+
+/**
+ * 封装delete方法，对应delete请求
+ * @param {String} url [请求的url地址]
+ * @param {Object} params [请求时携带的参数]
+ */
+export function deleteRequest(url) {
+  return function(params = {}) {
+    return axios.delete(url, {
+      params,
+      paramsSerializer: params => {
+        return QS.stringify(params, { indices: false })
+      }
+    })
+  }
+}
+
+export default axios
