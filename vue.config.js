@@ -9,15 +9,15 @@ module.exports = {
   outputDir: 'dist', // 打包后目录
   devServer: {
     // 跨域代理
-    // proxy: {
-    //   '/': {
-    //     target: 'https://www.liulongbin.top:8888/api/private/v1/',
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       '^/': '/'
-    //     }
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'https://www.liulongbin.top:8888/api/private/v1',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    }
   },
   // vue-cli 4.x 版本别名配置方法
   chainWebpack(config) {
